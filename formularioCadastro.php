@@ -1,6 +1,9 @@
 <?php
 require 'conexao.php';
+
 ?>
+
+
 <!doctype html>
 <html>
     <head>
@@ -37,16 +40,20 @@ require 'conexao.php';
 			<label for="salario">Salario: </label>
 			<input type="text" name="salario" id="salario" /></p>
 			<label for ="atividades">Atividades: </label>
-			<textarea cols=60 id="atividades" rows="10" name="atividades" maxlength="500" wrap="hard"  "></textarea> <br> <br>
-			<label for="nome">Filhos: </label>
-			<table >
+			<textarea cols=60 id="atividades" rows="10" name="atividades" maxlength="700" wrap="hard"  "></textarea> <br> <br>
+			<table BORDER=1>
+				<th>Nome</th>
+				<th>Data Nascimento</th>
+				<th> </th>
+				<th> </th>
 				<tr>
-				<th></th>
-				<input type="submit" value="Novo Filho">
-			</table>
-
+				<label for="Filhos">Filhos:
+				
+			</table> </p>
+			<p><a href="formularioCadastroFilho.php">Novo Filho</a></p>
             <input type="submit" value="Salvar">
-			<input type="submit" value="Cancelar">
+			<input type="button" value="Cancelar" onClick="history.go(-1)">
+		
         </form>
     </body>
 </html>

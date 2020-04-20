@@ -1,12 +1,23 @@
 <?php
+
+require_once 'conexao.php';
 //iniciando a conexão com o banco de dados 
-$cx = mysqli_connect("localhost", "root", "");
+$cx = mysqli_connect(DB_HOST, DB_USER, DB_PASS,DB_NAME);
 
 //selecionando o banco de dados 
-$db = mysqli_select_db($cx, "sistemateste");
+$db = mysqli_select_db($cx, DB_NAME);
 
- //criando a query de consulta à tabela criada 
-$sql = mysqli_query($cx, "SELECT * FROM funcionario ") or die( 
+
+$nomeFuncionario = isset($_POST['nomeFuncionario']) ? $_POST['nomeFuncionario'] : null;
+
+if(array_key_exists('pesquisar', $_POST)) {
+	$pesquisar = $_POST['pesquisar'];
+} else {
+    $pesquisar = "%%";
+}
+
+//criando a query de consulta à tabela criada 
+$sql = mysqli_query($cx, "SELECT * FROM funcionario where nome LIKE '%$pesquisar%' ") or die( 
   mysqli_error($cx) //caso haja um erro na consulta 
 );
 ?>
@@ -20,10 +31,11 @@ $sql = mysqli_query($cx, "SELECT * FROM funcionario ") or die(
     <body>
         
         <h1>SISTEMA TESTE </h1>
-        
-	
-		  
-    
+			<form method="POST" action="consultaFuncionario.php">
+				Nome Funcionario:<input type="text" name="pesquisar">
+				<input type="submit" value="ENVIAR">
+			</form>
+		     
         <table width="50%" border="1">
             <thead>
                 <tr>
@@ -53,15 +65,16 @@ $sql = mysqli_query($cx, "SELECT * FROM funcionario ") or die(
 					<th> <?php echo $aux["Nome"]."<br />"; ?> </th>
 					<th> <?php echo $aux["DataNascimento"]."<br />"; ?> </th>
 					<th> <?php echo $row_filho['num_result']."<br />"; ?> </th><p>
-					<th> <a href="form-edit.php?codigo=<?php echo $aux['codigo'] ?>">Editar</a></th>
-					<th> <a href="delete.php?codigo=<?php echo $aux['codigo'] ?>" onclick="return confirm('Tem certeza de que deseja remover?');">Remover</a><?php }?>
+					<th> <a href="editar.php?codigo=<?php echo $aux['CodFuncionario'] ?>">Editar</a></th>
+					<th> <a href="excluir.php?codigo=<?php echo $aux['CodFuncionario'] ?>&resultadoFilho=<?php echo $row_filho['num_result'] ?>" onclick="return confirm('Tem certeza de que deseja remover?');">Remover</a><?php }?>
 					</tr>
                 </tr>
     
             </tbody>
         </table>
                            <td>
-						   	 <p><a href="form-add.php">Adicionar Filho</a></p>
+						   	 <p><a href="formularioCadastro.php">Adicionar Funcionario</a></p>
+							 <p><a href="principal.php">Voltar</a></p>
                        
                     </td>
  

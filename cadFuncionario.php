@@ -5,7 +5,7 @@ $nome = isset($_POST['nome']) ? $_POST['nome'] : null;
 $dataNascimento = isset($_POST['calendario']) ? $_POST['calendario'] : null;
 $salario = isset($_POST['salario']) ? $_POST['salario'] : null;
 $atividades = isset($_POST['atividades']) ? $_POST['atividades'] : null;
-echo $dataNascimento;
+
 // validação (bem simples, só pra evitar dados vazios)
 if (empty($nome) )
 {
