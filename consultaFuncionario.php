@@ -74,7 +74,9 @@ $sql = mysqli_query($cx, "SELECT * FROM funcionario where nome LIKE '%$pesquisar
         </table>
                            <td>
 						   	 <p><a href="formularioCadastro.php">Adicionar Funcionario</a></p>
-							 <p><a href="principal.php">Voltar</a></p>
+							 <form>
+								<a href="principal.php"><input type="button"value="Cancelar"></a>
+							</form>
                        
                     </td>
  

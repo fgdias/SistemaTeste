@@ -103,7 +103,9 @@ if (!is_array($funcionario))
 			<p><a href="formularioCadastroFilho.php">Novo Filho</a></p>
             <input type="hidden" name="id" value="<?php echo $codigo ?>">
             <input type="submit" value="Alterar">
-			<p><a href="principal.php">Voltar</a></p>
+			<form>
+				<a href="principal.php"><input type="button"value="Voltar"></a>
+			</form>
         </form>
     </body>
 </html>

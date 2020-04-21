@@ -41,7 +41,10 @@ require 'conexao.php';
 			<input type="text" name="calendario" id="calendario" /></p>		
 			</table> </p>
             <input type="submit" value="Salvar">
-			<input type="submit" value="Cancelar">
+			
         </form>
+		<form>
+		 <a href="principal.php"><input type="button"value="Cancelar"></a>
+		</form>
     </body>
 </html>
